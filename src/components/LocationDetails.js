@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const LocationDetails = () => {
+export default function LocationDetails () {
     return (
             <article className='p-4 mt-9'>
                 <p>مرحبا، كيف حالك</p>
