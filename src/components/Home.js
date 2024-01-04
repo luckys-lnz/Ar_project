@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 export const Home = () => {
   return (
     <>
-      <div className='rtl p-4 bg-gray-500 rounded mx-20'>
+      <div className='p-4 bg-gray-500 rounded mx-20 '>
 
         <div className=" flex justify-between w-75 bg-white mx-20">
 
@@ -23,6 +23,13 @@ export const Home = () => {
         </div>
 
         <ListInfo />
+        <ListInfo />
+        <ListInfo />
+        <ListInfo />
+        <ListInfo />
+        <ListInfo />
+        <ListInfo />
+        <ListInfo />
 
       </div>
 
@@ -35,13 +42,9 @@ const ListInfo = () => {
 
   return (
 
-    <div className=''>
+    <div className='flex justify-between my-4 bg-white p-2 rounded-full'>
 
-        <div className='flex justify-between my-4 bg-white p-2 rounded-full'>
-
-          <Link to='/MapData'>بقي 10 أيام</Link> <Link to='/MapData'>مرحبا، كيف حالك</Link>
-
-        </div>
+      <Link to='/MapData'>بقي 10 أيام</Link> <Link to='/MapData'>مرحبا، كيف حالك</Link>
 
     </div>
   )
