@@ -1,41 +1,55 @@
-// Map.js
-import React, { Component } from 'react';
-import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
-import { LocationDetails } from './LocationDetails.js';
+import React from 'react';
+import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
+import LocationDetails from '../components/LocationDetails'
 
-class MapContainer extends Component {
-  render() {
+const libraries = ['places'];
+const mapContainerStyle = {
+  width: '500px',
+  height: '100vh',
+};
+const center = {
+  lat: 7.2905715, // default latitude
+  lng: 80.6337262, // default longitude
+};
 
-    const mapStyles = {
-      height: '100%',
-      width: '50%'
-    }
-    
-    return (
-      <div className='flex flex-row-reverse justify-between'>
-        <article className='w-1/2 p-4 '>
-          <Map
-              google={this.props.google}
-              zoom={14}
-            style={mapStyles}
-              initialCenter={{ lat: 37.7749, lng: -122.4194 }}
-              >
-              <Marker position={{ lat: 37.7749, lng: -122.4194 }} />
-            </Map>
-        </article>
-          <div>
-            <LocationDetails />
-            <LocationDetails />
-            <LocationDetails />
-            <LocationDetails />
-            <LocationDetails />
-            <LocationDetails />
-          </div>        
-      </div>
-    );
+const MapContainer = () => {
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: '',
+    libraries,
+  });
+
+  if (loadError) {
+    return <div>Error loading maps</div>;
   }
-}
 
-export default GoogleApiWrapper({
-  apiKey: 'AIzaSyC8PUaZKsDfCekzNFQtKGRB8kuEYKXpy7M',
-})(MapContainer);
+  if (!isLoaded) {
+    return <div>Loading maps</div>;
+  }
+
+  return (
+    <>
+      <div className='border-solid border-2 border-gray-500 rounded mx-20'>
+    <div className='flex justify-between flex-row-reverse'>
+      <GoogleMap
+        mapContainerStyle={mapContainerStyle}
+        zoom={10}
+        center={center}
+      >
+        <Marker position={center} />
+        </GoogleMap>
+        
+        <div className='flex flex-col justify-center'>
+          <LocationDetails />
+          <LocationDetails />
+          <LocationDetails />
+          <LocationDetails />
+          <LocationDetails />
+          <LocationDetails />
+        </div>
+        </div>
+      </div>
+      </>
+  );
+};
+
+export default MapContainer;
