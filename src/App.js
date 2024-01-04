@@ -4,11 +4,12 @@ import Navbar from './components/Navbar';
 import { Home } from './components/Home';
 import { About } from './components/About';
 import MapContainer from './components/MapData'
+import './index.css'
 
 const App = () => {
   return (
     < >
-    
+
       <Router>
         
         <Navbar />
@@ -25,6 +26,7 @@ const App = () => {
         </Routes>
         
       </Router>
+
 
     </>
 
